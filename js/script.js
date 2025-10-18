@@ -1,5 +1,9 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
+const gameOverScreen = document.getElementById('gameOverScreen');
+const retryButton = document.getElementById('retryButton');
+const rankingButton = document.getElementById('rankingButton');
+const menuButton = document.getElementById('menuButton');
 
 const jump = () => {
 mario.classList.add('jump');
@@ -32,11 +36,24 @@ if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
 
     clearInterval(loop);
 
+    gameOverScreen.style.display = 'flex';
+
 }
 
 }, 10 );
 
 
-document.addEventListener('keydown', jump)
+document.addEventListener('keydown', jump);
+
+
+retryButton.addEventListener('click' , () => {
+    location.reload();
+});
    
-  
+  rankingButton.addEventListener('click' , () => {
+    alert('Aqui futuramente vai aparecer a tabela de rankings!')
+  });
+
+  menuButton.addEventListener('click', () => {
+    alert('voltando ao menu principal...')
+  })

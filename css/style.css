@@ -18,7 +18,7 @@
     position: absolute;
     bottom: 0;
     width: 80px;
-   animation: pipe-animation 1.5s infinite linear;
+   animation: pipe-animation 1.1s infinite linear;
     
    
 }
@@ -73,4 +73,36 @@ from {
 to {
     right: 100%;
 }
+  }
+
+  .game-over-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: sans-serif;
+    display: none;
+  }
+
+  .game-over-screen button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff4747;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .game-over-screen button:hover {
+    background-color: #ff2a2a;
   }
