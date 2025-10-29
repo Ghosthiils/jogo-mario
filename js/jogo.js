@@ -55,5 +55,6 @@ retryButton.addEventListener('click' , () => {
   });
 
   menuButton.addEventListener('click', () => {
-    alert('voltando ao menu principal...')
+    
+    //alert('voltando ao menu principal...')
   })
