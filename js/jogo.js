@@ -58,3 +58,13 @@ retryButton.addEventListener('click' , () => {
     
     //alert('voltando ao menu principal...')
   })
+
+
+  fetch('/salvar-pontuacao', {
+    method: 'POST',
+    headers: {'content-type': 'application/json'},
+    body: JSON.stringify({
+      nome: jogadorNome,
+      pontos: score
+    })
+  });
