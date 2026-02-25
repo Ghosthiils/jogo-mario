@@ -51,7 +51,7 @@ retryButton.addEventListener('click' , () => {
 });
    
   rankingButton.addEventListener('click' , () => {
-    alert('Aqui futuramente vai aparecer a tabela de rankings!')
+   
   });
 
   menuButton.addEventListener('click', () => {
