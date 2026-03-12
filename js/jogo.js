@@ -2,8 +2,17 @@ const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const gameOverScreen = document.getElementById('gameOverScreen');
 const retryButton = document.getElementById('retryButton');
-const rankingButton = document.getElementById('rankingButton');
-const menuButton = document.getElementById('menuButton');
+
+
+const scoreElement = document.querySelector('.score');
+
+let score = 0 
+
+const scoreInterval = setInterval(() => {
+    score++
+    scoreElement.innerText = score
+}, 1000)
+
 
 const jump = () => {
 mario.classList.add('jump');
@@ -35,8 +44,23 @@ if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
     mario.style.marginLeft = '50px'
 
     clearInterval(loop);
+    clearInterval(scoreInterval)
 
     gameOverScreen.style.display = 'flex';
+
+
+    const jogadorNome = prompt("Digite seu nome:") || "jogador"
+
+    fetch('/salvar-pontuacao', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'
+
+        },
+        body: JSON.stringify({
+            nome: jogadorNome,
+            pontos: score
+        })
+    })
 
 }
 
@@ -59,5 +83,11 @@ retryButton.addEventListener('click' , () => {
     //alert('voltando ao menu principal...')
   })
 
+  
+
+
+
+
+ 
 
  
