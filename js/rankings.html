@@ -9,13 +9,33 @@
 <body>
     <h1>Rankings de jogadores</h1>
 
+    <table id="rankingTable">
+
     <div id="ranking">
 
-        Carregando rankings...
+        <thead>
+            <tr>
+                <th>Posição</th>
+                <th>Jogador</th>
+                <th>Pontos</th>
+            </tr>
+        </thead>
+
+        <tbody id="rankingBody">
+
+        <tr>
+            <td colspan="3">Carregando rankings...</td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+    <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
 
     </div>
 
 
-    <script src="rankings.js"></script>
+    <script src="/js/rankings.js"></script>
 </body>
 </html>

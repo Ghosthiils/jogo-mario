@@ -74,6 +74,8 @@ app.get('/ranking', (req, res) => {
 
 
 
+
+
 app.listen(process.env.PORT,  () => {
     console.log(`Servidor funcuionando ${process.env.PORT}`)
 });

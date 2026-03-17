@@ -1,27 +1,33 @@
-const rankingDiv = document.getElementById('ranking')
+const rankingBody = document.getElementById('rankingBody')
 
 fetch('/ranking')
 .then(response => response.json())
 .then(data => {
 
-    rankingDiv.innerHTML = ''
+    rankingBody.innerHTML = ''
 
     data.forEach((player, index) => {
 
-        const playerElement = document.createElement('div')
+        const row = document.createElement('tr')
 
-        playerElement.classList.add('player')
+  
+        row.innerHTML= `
+        <td>${index + 1}</td>
+        <td>${player.nome}</td>
+        <td>${player.pontos}</td>
+        `
 
-        playerElement.innerHTML = `
-        ${index + 1} - ${player.nome} : ${player.pontos} pontos`
-
-        rankingDiv.appendChild(playerElement)
+        rankingBody.appendChild(row)
     })
 })
 
 .catch(error => {
+    rankingBody.innerHTML = `
+    <tr>
+    <td colspan="3">Erro ao carregar ranking</td>
+    </tr>
+    `
 
-    rankingDiv.innerHTML = 'Erro ao carregar os rankings'
 
     console.log(error)
 })
