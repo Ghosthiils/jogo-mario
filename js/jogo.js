@@ -22,7 +22,7 @@ let score = 0
 const scoreInterval = setInterval(() => {
     score++
     scoreElement.innerText = score
-}, 1000)
+}, 1)
 
 
 const jump = () => {

@@ -37,19 +37,56 @@ app.post('/salvar-pontuacao', (req, res) => {
 
     const {nome, pontos} = req.body
 
-    const sql = "INSERT INTO jogadores (nome, pontos) VALUES (?, ?)"
+    const checkSql = "SELECT * FROM jogadores WHERE nome = ?"
 
-    db.query(sql, [nome, pontos], (err, result) => {
+    db.query(checkSql, [nome], (err, results) => {
 
         if (err) {
-            console.log(err)
-            return res.status(500).json({erro: "Erro ao salvar pontuação"})
+            return res.status(500).json({ erro: "Erro ao verificar jogador" })
         }
 
-        res.json({mensagem: "Pontuação salva com sucesso"})
-    })
+        
+        if (results.length === 0) {
 
+            const insertSql = "INSERT INTO jogadores (nome, pontos) VALUES (?, ?)"
+
+            db.query(insertSql, [nome, pontos], (err) => {
+
+                if (err) {
+                    return res.status(500).json({ erro: "Erro ao inserir jogador" })
+                }
+
+                return res.json({ mensagem: "Pontuação salva (novo jogador)" })
+            })
+
+        } else {
+
+            const pontosAtuais = results[0].pontos
+
+            
+            if (pontos > pontosAtuais) {
+
+                const updateSql = "UPDATE jogadores SET pontos = ? WHERE nome = ?"
+
+                db.query(updateSql, [pontos, nome], (err) => {
+
+                    if (err) {
+                        return res.status(500).json({ erro: "Erro ao atualizar pontuação" })
+                    }
+
+                    return res.json({ mensagem: "Novo recorde atualizado!" })
+                })
+
+            } else {
+                
+                return res.json({ mensagem: "Pontuação menor, não atualizada" })
+            }
+        }
+
+    })
 })
+
+
 
 
 
@@ -60,6 +97,7 @@ app.get('/ranking', (req, res) => {
     db.query(sql, (err, results) => {
 
         if (err) {
+            console.log("ERRO REAL:", err)
             return res.status(500).json({erro: "Erro ao buscar ranking"})
         }
 

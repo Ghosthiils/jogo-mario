@@ -7,11 +7,25 @@
     <title>Menu</title>
 </head>
 <body>
-    <div class="score">Pontos: </div>
-    <div class="Tela-fundo">
-<button>Login</button>
-<button>Senha</button>
+    <div class="menu">
+
+    <h1>Mario Jump</h1>
+
+    <button onclick="window.location.href='jogo.html'">Jogar</button>
+    <button onclick="window.location.href='rankings.html'">Rankings</button>
+
+    <button onclick="sair()">Sair</button>
 
     </div>
+
+
+    <script>
+        function sair() {
+            localStorage.removeItem('jogadorNome')
+            alert('Obrigado por jogar!')
+        }
+    </script>
+    
+    
 </body>
 </html>
