@@ -106,3 +106,32 @@ to {
   .game-over-screen button:hover {
     background-color: #ff2a2a;
   }
+
+  
+  .hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px 20px;
+    border-radius: 12px;
+
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+}
+
+.hud p {
+    margin: 5px 0;
+}
+
+#playerName {
+    font-size: 16px;
+}
+
+#score {
+    font-size: 22px;
+    font-weight: bold;
+}

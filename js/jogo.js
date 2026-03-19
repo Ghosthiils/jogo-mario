@@ -6,9 +6,13 @@ const rankingButton = document.getElementById('rankingButton');
 const menuButton = document.getElementById('menuButton');
 
 
-const scoreElement = document.querySelector('.score');
+const scoreElement = document.getElementById('score');
+const playerNameElement = document.getElementById('playerName')
+
 
 let jogadorNome = localStorage.getItem("jogadorNome")
+
+playerNameElement.innerText = 'jogador: ' + jogadorNome
 
   if (!jogadorNome) {
 

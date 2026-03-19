@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2')
 require('dotenv').config();
+const bcrypt = require('bcrypt');
 
 const app = express();
 
@@ -106,9 +107,63 @@ app.get('/ranking', (req, res) => {
     })
 })
 
+app.post('/registro', async (req, res) => {
+    const {nome, email, senha } = req.body
+
+    try {
+        const senhaHash = await bcrypt.hash(senha, 10)
+
+        const sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)"
+
+        db.query(sql, [nome, email, senhaHash], (err) => {
+
+            if (err) {
+                console.log("ERRO REGISTRO:", err)
+                return res.status(500).json({ erro: "Erro ao registrar usuário" })
+
+            }
+
+            res.json({ mensagem: "Usuario registrado com sucesso" })
+
+        })
+
+    } catch (error) {
+        console.log("ERRO REGISTRO:", err)
+        res.status(500).json({ erro: "Erro ao processar registro"})
+    }
+})
 
 
+app.post('/login', (req, res) => {
 
+    const {email, senha} = req.body
+
+    const sql = "SELECT * FROM usuarios WHERE email = ?"
+
+    db.query(sql, [email], async (err, results) => {
+
+        if (err) {
+            return res.status(500).json({ erro: "Erro no servidor" })
+        }
+
+        if (results.length === 0) {
+            return res.status(401).json({ erro: "Email ou senha incorretos" })
+        }
+
+        const usuario = results[0]
+
+        const senhaValida = await bcrypt.compare(senha, usuario.senha)
+
+        if (!senhaValida) {
+            return res.status(401).json({ erro: "Email ou senha incorretos" })
+        }
+
+        res.json({ mensagem: "Login bem-sucedido", usuario })
+
+
+    })
+
+})
 
 
 
