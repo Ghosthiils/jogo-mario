@@ -108,9 +108,11 @@ app.get('/ranking', (req, res) => {
 })
 
 app.post('/registro', async (req, res) => {
-    const {nome, email, senha } = req.body
+
+    const { nome, email, senha } = req.body
 
     try {
+
         const senhaHash = await bcrypt.hash(senha, 10)
 
         const sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)"
@@ -118,19 +120,18 @@ app.post('/registro', async (req, res) => {
         db.query(sql, [nome, email, senhaHash], (err) => {
 
             if (err) {
-                console.log("ERRO REGISTRO:", err)
+                console.log("ERRO REGISTRO:", err) 
                 return res.status(500).json({ erro: "Erro ao registrar usuário" })
-
             }
 
-            res.json({ mensagem: "Usuario registrado com sucesso" })
-
+            res.json({ mensagem: "Usuário registrado com sucesso" })
         })
 
     } catch (error) {
-        console.log("ERRO REGISTRO:", err)
-        res.status(500).json({ erro: "Erro ao processar registro"})
+        console.log("ERRO GERAL:", error) 
+        res.status(500).json({ erro: "Erro no servidor" })
     }
+
 })
 
 
