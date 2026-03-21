@@ -1,6 +1,10 @@
+const mensagemErro = document.getElementById('mensagem-erro')
+
+mensagemErro.innerText = 'Emerson é gay'
+
 function logar(){
 
-    fetch('/login', {
+    fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({

@@ -37,3 +37,17 @@ button {
 button:hover {
     background: #555;
 }
+
+@media (max-width: 600px) {
+    .menu {
+        width: 90%;
+        padding: 20px;
+    }
+
+    body {
+        padding:  10px;
+        height: auto;
+    }
+
+   
+}

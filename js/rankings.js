@@ -8,26 +8,30 @@ fetch('/ranking')
 
     data.forEach((player, index) => {
 
-        const row = document.createElement('tr')
+        const tr = document.createElement('tr')
 
-  
-        row.innerHTML= `
-        <td>${index + 1}</td>
+
+        let medalha = ''
+
+
+        if(index === 0) medalha = '🥇'
+        else if (index === 1) medalha = '🥈'
+        else if (index === 2) medalha = '🥉'
+
+        tr.innerHTML = `
+        <td>${medalha} ${index + 1}</td>
         <td>${player.nome}</td>
         <td>${player.pontos}</td>
-        `
 
-        rankingBody.appendChild(row)
+      `
+
+
+
+        rankingBody.appendChild(tr)
     })
 })
 
-.catch(error => {
-    rankingBody.innerHTML = `
-    <tr>
-    <td colspan="3">Erro ao carregar ranking</td>
-    </tr>
-    `
-
-
-    console.log(error)
+.catch(err => {
+    rankingBody.innerHTML = '<tr><td colspan="3">Erro ao carregar ranking</td></tr>'
+    console.log(err)
 })

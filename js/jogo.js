@@ -10,16 +10,18 @@ const scoreElement = document.getElementById('score');
 const playerNameElement = document.getElementById('playerName')
 
 
-let jogadorNome = localStorage.getItem("jogadorNome")
 
-playerNameElement.innerText = 'jogador: ' + jogadorNome
 
-  if (!jogadorNome) {
 
-    jogadorNome = prompt("Digite seu nome:")
 
-    localStorage.setItem("jogadorNome", jogadorNome)
+  const usuario = JSON.parse(localStorage.getItem("usuario"))
+
+  if (!usuario) {
+    alert("Voce precisa estar logado !")
+    window.location.href = "login.html"
   }
+
+  playerNameElement.innerText = 'Jogador: ' + usuario.nome
 
 let score = 0 
 
@@ -41,12 +43,22 @@ const loop = setInterval(() => {
     
 
 const pipePosition = pipe.offsetLeft;
-const marioPosition = +window.getComputedStyle(mario).bottom.replace('px' , '')
+
+const marioPosition = +window
+    .getComputedStyle(mario)
+    .bottom.replace('px', '');
+
+const marioWidth = mario.offsetWidth;
+const pipeWidth = pipe.offsetWidth;
 
 console.log(marioPosition)
 
 
-if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
+if (
+    pipePosition <= marioWidth - 20 &&
+    pipePosition > 0 &&
+    marioPosition < pipeWidth - 10
+) {
 
     pipe.style.animation = 'none';
     pipe.style.left = `${pipePosition}px` ;
@@ -73,12 +85,12 @@ if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
 
         },
         body: JSON.stringify({
-            nome: jogadorNome,
+            nome: usuario.nome,
             pontos: score
         })
     })
 
-}
+}    ////////////////////////////
 
 }, 10 );
 
