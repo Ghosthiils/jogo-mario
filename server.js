@@ -125,19 +125,27 @@ app.post('/registro', async (req, res) => {
         db.query(sql, [nome, email, senhaHash], (err) => {
 
             if (err) {
-                console.log("ERRO REGISTRO:", err) 
-                return res.status(500).json({ erro: "Erro ao registrar usuário" })
+                console.log("ERRO REGISTRO:", err)
+
+                if (err.code === 'ER_DUP_ENTRY') {
+                    return res.json({ erro: true, mensagem: "Email já cadastrado!" })
+                }
+
+                return res.status(500).json({ erro: true, mensagem: "Erro ao registrar usuário" })
             }
 
-            res.json({ mensagem: "Usuário registrado com sucesso" })
+            return res.json({ mensagem: "Usuário registrado com sucesso" })
         })
 
     } catch (error) {
-        console.log("ERRO GERAL:", error) 
-        res.status(500).json({ erro: "Erro no servidor" })
+        console.log("ERRO GERAL:", error)
+        return res.status(500).json({ erro: true, mensagem: "Erro no servidor" })
     }
 
+    res.json({ mensagem: "Conta criada com sucesso!" })
 })
+
+
 
 
 app.post('/login', (req, res) => {
@@ -153,7 +161,7 @@ app.post('/login', (req, res) => {
         }
 
         if (results.length === 0) {
-            return res.status(401).json({ erro: "Email ou senha incorretos" })
+            return res.status(400).json({ mensagem: "Email ou senha inválidos" })
         }
 
         const usuario = results[0]
@@ -161,13 +169,14 @@ app.post('/login', (req, res) => {
         const senhaValida = await bcrypt.compare(senha, usuario.senha)
 
         if (!senhaValida) {
-            return res.status(401).json({ erro: "Email ou senha incorretos" })
+           return res.status(401).json({ mensagem: "Email ou senha inválidos" })
         }
 
         res.json({ mensagem: "Login bem-sucedido", usuario })
 
 
     })
+    res.json({ mensagem: "Login realizado com sucesso!", usuario })
 
 })
 
