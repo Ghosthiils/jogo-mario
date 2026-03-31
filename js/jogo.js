@@ -8,6 +8,9 @@ const menuButton = document.getElementById('menuButton');
 
 const scoreElement = document.getElementById('score');
 const playerNameElement = document.getElementById('playerName')
+const jumpSound = document.getElementById('jumpSound');
+const gameOverSound = document.getElementById('gameOverSound');
+const bgMusic = document.getElementById('bgMusic');
 
 
 
@@ -34,6 +37,9 @@ const scoreInterval = setInterval(() => {
 const jump = () => {
 mario.classList.add('jump');
 
+jumpSound.currentTime = 0;
+jumpSound.play();
+
 setTimeout(() => {
     mario.classList.remove('jump');
 }, 500);
@@ -58,7 +64,10 @@ if (
     pipePosition <= marioWidth - 20 &&
     pipePosition > 0 &&
     marioPosition < pipeWidth - 10
+    
 ) {
+
+    gameOverSound.play()
 
     pipe.style.animation = 'none';
     pipe.style.left = `${pipePosition}px` ;
@@ -79,7 +88,7 @@ if (
     
     
 
-    fetch('/salvar-pontuacao', {
+    fetch('http://localhost:3000/salvar-pontuacao', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'
 
@@ -108,8 +117,20 @@ retryButton.addEventListener('click' , () => {
 
   menuButton.addEventListener('click', () => {
     
-    //alert('voltando ao menu principal...')
+   
   })
+
+  document.addEventListener('click' , () => {
+    bgMusic.play()
+  })
+
+  jumpSound.volume = 0.1
+gameOverSound.volume = 0.3
+bgMusic.volume = 0.1
+
+
+
+
 
   
 

@@ -1,6 +1,6 @@
 const rankingBody = document.getElementById('rankingBody')
 
-fetch('/ranking')
+fetch('http://localhost:3000/ranking')
 .then(response => response.json())
 .then(data => {
 

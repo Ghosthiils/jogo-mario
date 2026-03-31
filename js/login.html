@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login-registro.css">
     <title>Login</title>
-    <style>
-        #mensagem-erro {
-            color: red;
-            margin: 20px 0;
-            text-align: center;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-    </style>
+    
 </head>
 <body>
 
@@ -21,11 +16,18 @@
     <div id="mensagem-erro"></div>
 
     <input type="email" id="email" placeholder="Email">
+    <br>
+    
     <input type="password" id="senha" placeholder="Senha">
+
+    <br>
+    
 
     <button onclick="logar()">Entrar</button>
 
     <button onclick="window.location.href='registro.html'">Criar conta</button>
+
+    <button onclick="window.location.href='index.html'">Voltar ao Menu</button>
 
     </div>
 

@@ -1,6 +1,6 @@
 const mensagemErro = document.getElementById('mensagem-erro')
 
-mensagemErro.innerText = 'Emerson é gay'
+
 
 function logar(){
 

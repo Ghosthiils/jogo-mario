@@ -7,6 +7,7 @@ const cors = require('cors')
 
 
 
+
 const app = express();
 
 app.use(express.json());
@@ -176,8 +177,7 @@ app.post('/login', (req, res) => {
 
 
     })
-    res.json({ mensagem: "Login realizado com sucesso!", usuario })
-
+    
 })
 
 
@@ -185,5 +185,5 @@ app.post('/login', (req, res) => {
 
 
 app.listen(process.env.PORT,  () => {
-    console.log(`Servidor funcuionando ${process.env.PORT}`)
+    console.log(`Servidor funcionando ${process.env.PORT}`)
 });
