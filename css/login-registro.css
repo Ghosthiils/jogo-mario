@@ -5,22 +5,28 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    margin: 0;
+    padding: 0;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    background-image: url('/image/Mario.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    font-family: Arial, sans-serif;
 }
 
 /* Caixa principal */
 .menu {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 320px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    width: 300px;
+    margin: auto;
+    margin-top: 100px;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 /* Título */

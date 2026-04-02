@@ -18,6 +18,17 @@ const bgMusic = document.getElementById('bgMusic');
 
 
   const usuario = JSON.parse(localStorage.getItem("usuario"))
+  const milestoneSound = document.getElementById('milestoneSound');
+
+
+
+let ultimoMilestone = 0
+ 
+
+  let velocidade = 0.7
+  pipe.style.animationDuration = `${velocidade}s`
+
+
 
   if (!usuario) {
     alert("Voce precisa estar logado !")
@@ -31,7 +42,31 @@ let score = 0
 const scoreInterval = setInterval(() => {
     score++
     scoreElement.innerText = score
-}, 1)
+
+    if (pipePosition < 0) {
+
+        if (score < 2000 && score % 500 === 0 && velocidade > 0.5) {
+            velocidade -= 0.3
+            pipe.style.animationDuration = `${velocidade}s`
+    }
+    
+if (score >= 2000 && score % 300 === 0 && velocidade >0.3) {
+    velocidade -= 0.3
+    pipe.style.animationDuration = `${velocidade}s`
+}
+    
+}
+
+if (score >= ultimoMilestone + 6000) {
+    milestoneSound.currentTime = 0
+    milestoneSound.play()
+    ultimoMilestone = score
+}
+
+}, 10)
+
+    
+ 
 
 
 const jump = () => {
@@ -59,6 +94,8 @@ const pipeWidth = pipe.offsetWidth;
 
 console.log(marioPosition)
 
+    
+
 
 if (
     pipePosition <= marioWidth - 20 &&
@@ -85,8 +122,17 @@ if (
     gameOverScreen.style.display = 'flex';
 
 
-    
-    
+ 
+
+
+/////////
+
+}
+})
+
+
+
+function salvarPontuacao() {
 
     fetch('http://localhost:3000/salvar-pontuacao', {
         method: 'POST',
@@ -99,10 +145,7 @@ if (
         })
     })
 
-}    ////////////////////////////
-
-}, 10 );
-
+}    ///////////////////
 
 document.addEventListener('keydown', jump);
 
@@ -139,6 +182,4 @@ bgMusic.volume = 0.1
 
 
 
- 
 
- 
