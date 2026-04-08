@@ -84,6 +84,19 @@ https://www.figma.com/design/tP8euih8DXBdY1SAciNJjU/Projeto-integrador?node-id=0
 
 
 
+<img width="779" height="869" alt="imagem (2)" src="https://github.com/user-attachments/assets/7d8c94ae-f743-4a9b-9f5c-164b3df023bc" />
+
+
+<img width="753" height="854" alt="imagem" src="https://github.com/user-attachments/assets/c4ffb10d-2b78-4e5b-8c78-09b478499ab9" />
+
+
+<img width="656" height="878" alt="imagem (1)" src="https://github.com/user-attachments/assets/659dfd44-74bf-4760-a1ed-d75e397c9e7b" />
+
+
+
+
+
+
 
 
 
