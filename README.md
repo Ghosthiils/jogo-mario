@@ -55,3 +55,40 @@ O jogo foi implementado com lógica de colisão, pontuação e animações.
 
 O sistema é todo responsivo
 
+
+
+
+
+
+
+
+
+
+
+
+
+![IMG-20260407-WA0054](https://github.com/user-attachments/assets/8994a925-ed71-41b5-836a-48eeccf393e0)
+![IMG-20260407-WA0053](https://github.com/user-attachments/assets/7b589dcc-473a-405b-8b02-ea14cca54e30)
+
+
+
+
+
+
+
+
+https://www.figma.com/design/tP8euih8DXBdY1SAciNJjU/Projeto-integrador?node-id=0-1&p=f&m=draw
+
+
+
+
+
+
+
+
+
+
+
+
+
+
