@@ -105,3 +105,132 @@ https://www.figma.com/design/tP8euih8DXBdY1SAciNJjU/Projeto-integrador?node-id=0
 
 
 
+[jogo_mario.sql](https://github.com/user-attachments/files/26581976/jogo_mario.sql)-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 08/04/2026 às 01:05
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `jogo_mario`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `jogadores`
+--
+
+CREATE TABLE `jogadores` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `pontos` int(11) DEFAULT 0,
+  `data_criacao` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `jogadores`
+--
+
+INSERT INTO `jogadores` (`id`, `nome`, `pontos`, `data_criacao`) VALUES
+(1, 'Luiz', 2961, '2026-03-16 23:18:25'),
+(2, 'Mario', 300, '2026-03-16 23:19:04'),
+(3, 'Emerson maracuja', 100, '2026-03-16 23:22:02'),
+(4, 'Henrique da Rita', 400, '2026-03-16 23:23:14'),
+(5, 'Gabriel HotWheels', 500, '2026-03-16 23:25:09'),
+(6, 'HENRIQUE', 755, '2026-03-20 23:37:00'),
+(7, 'roberto', 6827, '2026-03-21 01:24:24');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `senha` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`) VALUES
+(1, 'luiz', 'luiz.ffsouza5@senacsp.edu.br', '$2b$10$8uowgb6t4hYTUURpOkTc/.o1lyouDDXSQO8zzGPfxy1YfnZ14Slsa'),
+(2, 'HENRIQUE', 'admin@admin.com.br', '$2b$10$yenacc3uRNKHvGwN7LX76.9I6o4ufaAqNhJPzbSlvzcm7Qjddlj/O'),
+(3, 'roberto', 'luizfranca35mc@gmail.com', '$2b$10$p0o9Bh/rcC6T2I3aYXcobeKM.cyLuHG26rLZzqdmz5u2futZCl87S'),
+(4, 'Xaolim', 'luizfranca35mc@gmail.com.br', '$2b$10$9JxX183llJLvwAVRPrxMOeQbShJN4vp.lMDTIX8Xxkkdkt6ps.B3y'),
+(11, 'Xaolim', 'shampo.123@gmail.com', '$2b$10$t7tV7atLY1G5s5l5dYicnujv79UJW8/ek3OZHVLaWZhLFqQDie9sS'),
+(12, 'JORGINHO', 'palmeiras123@gmail.com', '$2b$10$.qC9Z1ZcrqIIXIjgpEbp0.MTAocO4L8fnVkQhQS0Juh40r4xTU5Ua'),
+(13, 'fdsdsfds', 'toks_lol@hotmail.com', '$2b$10$X05Dt66eI.Ls6ky2RFv1LeetqEFhY94dkwfMS53f/AmdpXQiin6lS'),
+(14, 'neymar', 'neymar.123@gmail.com.br', '$2b$10$lcjVvT2GliwD8xC.4RGcNuHZBCm6cG98VuMNxxi4Rxi24EQ5tCF6K');
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `jogadores`
+--
+ALTER TABLE `jogadores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `jogadores`
+--
+ALTER TABLE `jogadores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
