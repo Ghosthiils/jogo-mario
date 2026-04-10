@@ -1,4 +1,4 @@
-# Jogo Mario Jump
+
 
 Um jogo web simples inspirado no clássico Mario, desenvolvido como projeto integrador. O jogo inclui sistema de login, registro de usuários, salvamento de pontuações e rankings.
 
